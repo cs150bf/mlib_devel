@@ -15,9 +15,9 @@ Library {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "hong"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Mon Mar  7 13:18:04 2011"
-  RTWModifiedTimeStamp	  221404676
-  ModelVersionFormat	  "1.%<AutoIncrement:9>"
+  LastModifiedDate	  "Mon Mar  7 14:12:48 2011"
+  RTWModifiedTimeStamp	  221407966
+  ModelVersionFormat	  "1.%<AutoIncrement:10>"
   ConfigurationManager	  "None"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -688,7 +688,7 @@ Library {
     ShowPageBoundaries	    off
     ZoomFactor		    "100"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    327
+    SIDHighWatermark	    339
     Block {
       BlockType		      SubSystem
       Name		      "adc_sim"
@@ -1984,7 +1984,7 @@ Library {
       Name		      "c_to_ri_xblock"
       SID		      316
       Ports		      [1, 2]
-      Position		      [665, 205, 705, 245]
+      Position		      [665, 200, 705, 240]
       AttributesFormatString  "8_7 r/i"
       MinAlgLoopOccurrences   off
       PropExecContextOutsideSubsystem off
@@ -2038,7 +2038,7 @@ Library {
 	Block {
 	  BlockType		  Reference
 	  Name			  "force_im"
-	  SID			  324
+	  SID			  336
 	  Ports			  [1, 1]
 	  Position		  [150, 29, 200, 61]
 	  LibraryVersion	  "1.2"
@@ -2068,7 +2068,7 @@ Library {
 	Block {
 	  BlockType		  Reference
 	  Name			  "force_re"
-	  SID			  325
+	  SID			  337
 	  Ports			  [1, 1]
 	  Position		  [150, 94, 200, 126]
 	  LibraryVersion	  "1.2"
@@ -2098,7 +2098,7 @@ Library {
 	Block {
 	  BlockType		  Reference
 	  Name			  "slice_im"
-	  SID			  326
+	  SID			  338
 	  Ports			  [1, 1]
 	  Position		  [60, 34, 120, 66]
 	  LibraryVersion	  "1.2"
@@ -2130,7 +2130,7 @@ Library {
 	Block {
 	  BlockType		  Reference
 	  Name			  "slice_re"
-	  SID			  327
+	  SID			  339
 	  Ports			  [1, 1]
 	  Position		  [60, 94, 120, 126]
 	  LibraryVersion	  "1.2"
