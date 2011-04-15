@@ -13,11 +13,11 @@ Library {
   Creator		  "hchen05"
   UpdateHistory		  "UpdateHistoryNever"
   ModifiedByFormat	  "%<Auto>"
-  LastModifiedBy	  "sgowda"
+  LastModifiedBy	  "mwagner"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Tue Feb 22 17:26:22 2011"
-  RTWModifiedTimeStamp	  220296380
-  ModelVersionFormat	  "1.%<AutoIncrement:433>"
+  LastModifiedDate	  "Fri Apr 15 10:52:35 2011"
+  RTWModifiedTimeStamp	  224765551
+  ModelVersionFormat	  "1.%<AutoIncrement:436>"
   ConfigurationManager	  "None"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -727,7 +727,7 @@ Library {
     ShowPageBoundaries	    off
     ZoomFactor		    "100"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    238
+    SIDHighWatermark	    239
     Block {
       BlockType		      SubSystem
       Name		      "1new_yellow_block"
@@ -851,6 +851,7 @@ Library {
 	      Ports		      [1, 1]
 	      Position		      [230, 45, 285, 65]
 	      ShowName		      off
+	      LibraryVersion	      "1.2"
 	      SourceBlock	      "xbsIndex_r4/Convert"
 	      SourceType	      "Xilinx Type Converter Block"
 	      infoedit		      "Hardware notes: rounding and saturating require hardware resources; truncating and wrapping do"
@@ -885,6 +886,7 @@ Library {
 	      Ports		      [1, 1]
 	      Position		      [230, 120, 285, 140]
 	      ShowName		      off
+	      LibraryVersion	      "1.2"
 	      SourceBlock	      "xbsIndex_r4/Convert"
 	      SourceType	      "Xilinx Type Converter Block"
 	      infoedit		      "Hardware notes: rounding and saturating require hardware resources; truncating and wrapping do"
@@ -919,6 +921,7 @@ Library {
 	      Ports		      [1, 1]
 	      Position		      [120, 45, 180, 65]
 	      ShowName		      off
+	      LibraryVersion	      "1.2"
 	      SourceBlock	      "xbsIndex_r4/Slice"
 	      SourceType	      "Xilinx Bit Slice Extractor Block"
 	      infoedit		      "Extracts a given range of bits from each input sample and presents it at the output.  The outp"
@@ -964,6 +967,7 @@ Library {
 	      SID		      11
 	      Ports		      [1, 1]
 	      Position		      [360, 45, 420, 65]
+	      LibraryVersion	      "1.2"
 	      SourceBlock	      "xbsIndex_r4/Gateway Out"
 	      SourceType	      "Xilinx Gateway Out Block"
 	      infoedit		      "Gateway out block.  Converts Xilinx fixed point inputs into ouputs of type Simulink integer, d"
@@ -994,6 +998,7 @@ Library {
 	      SID		      12
 	      Ports		      [1, 1]
 	      Position		      [360, 120, 420, 140]
+	      LibraryVersion	      "1.2"
 	      SourceBlock	      "xbsIndex_r4/Gateway Out"
 	      SourceType	      "Xilinx Gateway Out Block"
 	      infoedit		      "Gateway out block.  Converts Xilinx fixed point inputs into ouputs of type Simulink integer, d"
@@ -41626,9 +41631,7 @@ Library {
       MaskVisibilityString    "on,on,on,on,on,on"
       MaskToolTipString	      "on,on,on,on,on,on"
       MaskVariables	      "io_dir=&1;arith_type=&2;bitwidth=@3;bin_pt=@4;sample_period=@5;latency=@6;"
-      MaskInitialization      "gw_name = clear_name(gcb);\nconfig.source = str2func('software_register_init');\nconfig"
-      ".toplevel = gcb;\nxBlock( config, {io_dir, arith_type, bitwidth, bin_pt, ... \n    sample_period, gw_name, laten"
-      "cy});"
+      MaskInitialization      "register_mask;"
       MaskSelfModifiable      on
       MaskIconFrame	      on
       MaskIconOpaque	      on
@@ -41651,71 +41654,21 @@ Library {
 	TiledPageScale		1
 	ShowPageBoundaries	off
 	ZoomFactor		"100"
-	SIDHighWatermark	27
+	SIDHighWatermark	29
 	SIDPrevWatermark	27
 	Block {
 	  BlockType		  Inport
-	  Name			  "sim_reg_in"
-	  SID			  3
-	  Position		  [15, 40, 35, 60]
+	  Name			  "sim_in"
+	  SID			  28
+	  Position		  [20, 52, 50, 68]
 	  IconDisplay		  "Port number"
 	}
 	Block {
-	  BlockType		  SubSystem
-	  Name			  "delay_pipe"
-	  SID			  25
-	  Ports			  [1, 1]
-	  Position		  [155, 30, 205, 70]
-	  MinAlgLoopOccurrences	  off
-	  PropExecContextOutsideSubsystem off
-	  RTWSystemCode		  "Auto"
-	  FunctionWithSeparateData off
-	  Opaque		  off
-	  RequestExecContextInheritance	off
-	  MaskHideContents	  off
-	  System {
-	    Name		    "delay_pipe"
-	    Location		    [70, 200, 650, 460]
-	    Open		    off
-	    ModelBrowserVisibility  off
-	    ModelBrowserWidth	    200
-	    ScreenColor		    "white"
-	    PaperOrientation	    "landscape"
-	    PaperPositionMode	    "auto"
-	    PaperType		    "usletter"
-	    PaperUnits		    "inches"
-	    TiledPaperMargins	    [0.500000, 0.500000, 0.500000, 0.500000]
-	    TiledPageScale	    1
-	    ShowPageBoundaries	    off
-	    ZoomFactor		    "100"
-	    Block {
-	      BlockType		      Inport
-	      Name		      "d"
-	      SID		      26
-	      Position		      [15, 15, 35, 35]
-	      IconDisplay	      "Port number"
-	    }
-	    Block {
-	      BlockType		      Outport
-	      Name		      "q"
-	      SID		      27
-	      Position		      [15, 15, 35, 35]
-	      IconDisplay	      "Port number"
-	    }
-	    Line {
-	      SrcBlock		      "d"
-	      SrcPort		      1
-	      DstBlock		      "q"
-	      DstPort		      1
-	    }
-	  }
-	}
-	Block {
 	  BlockType		  Reference
-	  Name			  "untitled_software_register_user_data_out"
-	  SID			  24
+	  Name			  "xps_library_software_register_reg_in_user_data_out"
+	  SID			  29
 	  Ports			  [1, 1]
-	  Position		  [60, 40, 125, 60]
+	  Position		  [230, 50, 290, 70]
 	  LibraryVersion	  "1.2"
 	  SourceBlock		  "xbsIndex_r4/Gateway In"
 	  SourceType		  "Xilinx Gateway In Block"
@@ -41738,38 +41691,31 @@ Library {
 	  sggui_pos		  "-1,-1,-1,-1"
 	  block_type		  "gatewayin"
 	  block_version		  "11.4"
-	  sg_icon_stat		  "65,20,1,1,white,yellow,0,00d3666e,right,"
+	  sg_icon_stat		  "60,20,1,1,white,yellow,0,00d3666e,right,"
 	  sg_mask_display	  "fprintf('','COMMENT: begin icon graphics');\npatch([0 1 1 0 ],[0 0 1 1 ],[0.95 0.93 0.65]);\npat"
-	  "ch([0.415385 0.369231 0.446154 0.369231 0.415385 0.492308 0.507692 0.523077 0.615385 0.553846 0.492308 0.446154 0.5"
-	  "23077 0.446154 0.492308 0.553846 0.615385 0.523077 0.507692 0.492308 0.415385 ],[0.1 0.25 0.5 0.75 0.9 0.9 0.85 0.9"
-	  " 0.9 0.7 0.9 0.75 0.5 0.25 0.1 0.3 0.1 0.1 0.15 0.1 0.1 ],[0.98 0.96 0.92]);\nplot([0 1 1 0 0 ],[0 0 1 1 0 ]);\nfpr"
-	  "intf('','COMMENT: end icon graphics');\nfprintf('','COMMENT: begin icon text');\ncolor('black');port_label('input',"
-	  "1,'\\fontsize{11pt}\\bf In ','texmode','on');\ncolor('black');port_label('output',1,' ');\nfprintf('','COMMENT: end"
-	  " icon text');\n"
+	  "ch([0.4 0.35 0.433333 0.35 0.4 0.483333 0.5 0.516667 0.616667 0.55 0.483333 0.433333 0.516667 0.433333 0.483333 0.5"
+	  "5 0.616667 0.516667 0.5 0.483333 0.4 ],[0.1 0.25 0.5 0.75 0.9 0.9 0.85 0.9 0.9 0.7 0.9 0.75 0.5 0.25 0.1 0.3 0.1 0."
+	  "1 0.15 0.1 0.1 ],[0.98 0.96 0.92]);\nplot([0 1 1 0 0 ],[0 0 1 1 0 ]);\nfprintf('','COMMENT: end icon graphics');\nf"
+	  "printf('','COMMENT: begin icon text');\ncolor('black');port_label('input',1,'\\fontsize{11pt}\\bf In ','texmode','o"
+	  "n');\ncolor('black');port_label('output',1,' ');\nfprintf('','COMMENT: end icon text');\n"
 	}
 	Block {
 	  BlockType		  Outport
 	  Name			  "reg_in"
 	  SID			  5
-	  Position		  [235, 40, 255, 60]
+	  Position		  [350, 52, 380, 68]
 	  IconDisplay		  "Port number"
 	}
 	Line {
-	  SrcBlock		  "delay_pipe"
+	  SrcBlock		  "sim_in"
+	  SrcPort		  1
+	  DstBlock		  "xps_library_software_register_reg_in_user_data_out"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "xps_library_software_register_reg_in_user_data_out"
 	  SrcPort		  1
 	  DstBlock		  "reg_in"
-	  DstPort		  1
-	}
-	Line {
-	  SrcBlock		  "untitled_software_register_user_data_out"
-	  SrcPort		  1
-	  DstBlock		  "delay_pipe"
-	  DstPort		  1
-	}
-	Line {
-	  SrcBlock		  "sim_reg_in"
-	  SrcPort		  1
-	  DstBlock		  "untitled_software_register_user_data_out"
 	  DstPort		  1
 	}
       }
