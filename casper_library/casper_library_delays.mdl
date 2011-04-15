@@ -13,11 +13,11 @@ Library {
   Creator		  "mdexter"
   UpdateHistory		  "UpdateHistoryNever"
   ModifiedByFormat	  "%<Auto>"
-  LastModifiedBy	  "sgowda"
+  LastModifiedBy	  "hong"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Wed Feb 23 12:23:57 2011"
-  RTWModifiedTimeStamp	  220364634
-  ModelVersionFormat	  "1.%<AutoIncrement:9>"
+  LastModifiedDate	  "Mon Mar  7 13:20:49 2011"
+  RTWModifiedTimeStamp	  221404847
+  ModelVersionFormat	  "1.%<AutoIncrement:12>"
   ConfigurationManager	  "None"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -637,7 +637,7 @@ Library {
   }
   System {
     Name		    "casper_library_delays"
-    Location		    [358, 89, 927, 738]
+    Location		    [353, 53, 922, 702]
     Open		    on
     ModelBrowserVisibility  off
     ModelBrowserWidth	    200
@@ -651,7 +651,7 @@ Library {
     ShowPageBoundaries	    off
     ZoomFactor		    "100"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    2019
+    SIDHighWatermark	    2157
     Block {
       BlockType		      SubSystem
       Name		      "Datatype_Conv_Cos"
@@ -2626,6 +2626,273 @@ Library {
 	    DstBlock		    "Relational19"
 	    DstPort		    1
 	  }
+	}
+      }
+    }
+    Block {
+      BlockType		      SubSystem
+      Name		      "Delay_1"
+      SID		      2030
+      Ports		      [1, 1]
+      Position		      [360, 394, 420, 446]
+      ShowName		      off
+      AttributesFormatString  "delay_general\\n%<delaytype>\\n[xBlock]"
+      LibraryVersion	      "1.6"
+      MinAlgLoopOccurrences   off
+      PropExecContextOutsideSubsystem off
+      RTWSystemCode	      "Auto"
+      FunctionWithSeparateData off
+      Opaque		      off
+      RequestExecContextInheritance off
+      MaskHideContents	      off
+      MaskType		      "delay_general_xblock"
+      MaskDescription	      "A combination of 7 different Delay blocks. Including delay_bram, delay_slr, sync_delay, s"
+      "ync_delay_en, sync_delay_prog, window_delay, pipeline."
+      MaskPromptString	      "delay type|Delay by  [delay_bram, delay_slr, sync_delay, sync_delay_en, window_delay, pi"
+      "peline]|BRAM latency  [delay_bram]|Max Delay (2^?) [sync_delay_prog]|Use DSP48 [delay_bram]"
+      MaskStyleString	      "popup(delay_bram|delay_slr|sync_delay|sync_delay_en|sync_delay_prog|window_delay|pipeline"
+      "),edit,edit,edit,checkbox"
+      MaskTunableValueString  "on,on,on,on,on"
+      MaskCallbackString      "||||"
+      MaskEnableString	      "on,on,on,on,on"
+      MaskVisibilityString    "on,on,on,on,on"
+      MaskToolTipString	      "on,on,on,on,on"
+      MaskVariables	      "delaytype=&1;DelayLen=@2;bram_latency=@3;MaxDelay=@4;use_dsp48=&5;"
+      MaskInitialization      "config.source=str2func('delay_general_init_xblock');\nconfig.name=delaytype;\nconfig.to"
+      "plevel=gcb;\nxBlock(config, {delaytype, ...\n                {'Delaylen',DelayLen, ...\n                'MaxDela"
+      "y', MaxDelay, ...\n                'use_dsp48', use_dsp48, ...\n                'bram_latency', bram_latency} }."
+      "..\n                );"
+      MaskIconFrame	      on
+      MaskIconOpaque	      on
+      MaskIconRotate	      "none"
+      MaskPortRotate	      "default"
+      MaskIconUnits	      "autoscale"
+      MaskValueString	      "delay_bram|5|1|1|on"
+      System {
+	Name			"Delay_1"
+	Location		[335, 166, 915, 426]
+	Open			off
+	ModelBrowserVisibility	off
+	ModelBrowserWidth	200
+	ScreenColor		"white"
+	PaperOrientation	"landscape"
+	PaperPositionMode	"auto"
+	PaperType		"usletter"
+	PaperUnits		"inches"
+	TiledPaperMargins	[0.500000, 0.500000, 0.500000, 0.500000]
+	TiledPageScale		1
+	ShowPageBoundaries	off
+	ZoomFactor		"100"
+	Block {
+	  BlockType		  Inport
+	  Name			  "In1"
+	  SID			  2150
+	  Position		  [15, 40, 35, 60]
+	  IconDisplay		  "Port number"
+	}
+	Block {
+	  BlockType		  SubSystem
+	  Name			  "delay_bram"
+	  SID			  2152
+	  Ports			  [1, 1]
+	  Position		  [60, 30, 110, 70]
+	  MinAlgLoopOccurrences	  off
+	  PropExecContextOutsideSubsystem off
+	  RTWSystemCode		  "Auto"
+	  FunctionWithSeparateData off
+	  Opaque		  off
+	  RequestExecContextInheritance	off
+	  MaskHideContents	  off
+	  System {
+	    Name		    "delay_bram"
+	    Location		    [70, 200, 650, 460]
+	    Open		    off
+	    ModelBrowserVisibility  off
+	    ModelBrowserWidth	    200
+	    ScreenColor		    "white"
+	    PaperOrientation	    "landscape"
+	    PaperPositionMode	    "auto"
+	    PaperType		    "usletter"
+	    PaperUnits		    "inches"
+	    TiledPaperMargins	    [0.500000, 0.500000, 0.500000, 0.500000]
+	    TiledPageScale	    1
+	    ShowPageBoundaries	    off
+	    ZoomFactor		    "100"
+	    Block {
+	      BlockType		      Inport
+	      Name		      "In1"
+	      SID		      2153
+	      Position		      [30, 120, 50, 140]
+	      IconDisplay	      "Port number"
+	    }
+	    Block {
+	      BlockType		      Reference
+	      Name		      "Constant2"
+	      SID		      2155
+	      Ports		      [0, 1]
+	      Position		      [15, 167, 70, 193]
+	      LibraryVersion	      "1.2"
+	      SourceBlock	      "xbsIndex_r4/Constant"
+	      SourceType	      "Xilinx Constant Block Block"
+	      arith_type	      "Boolean"
+	      const		      "1"
+	      n_bits		      "1"
+	      bin_pt		      "0"
+	      explicit_period	      on
+	      period		      "1"
+	      dsp48_infoedit	      "The use of this block for DSP48 instructions is deprecated.  Please use the Opmode block."
+	      equ		      "P=C"
+	      opselect		      "C"
+	      inp2		      "PCIN>>17"
+	      opr		      "+"
+	      inp1		      "P"
+	      carry		      "CIN"
+	      dbl_ovrd		      off
+	      has_advanced_control    "0"
+	      sggui_pos		      "-1,-1,-1,-1"
+	      block_type	      "constant"
+	      block_version	      "11.4"
+	      sg_icon_stat	      "55,26,0,1,white,blue,0,1c72b5be,right,"
+	      sg_mask_display	      "fprintf('','COMMENT: begin icon graphics');\npatch([0 1 1 0 ],[0 0 1 1 ],[0.77 0.82 0.91"
+	      "]);\npatch([0.363636 0.290909 0.4 0.290909 0.363636 0.490909 0.527273 0.563636 0.690909 0.581818 0.472727 0.4 0"
+	      ".509091 0.4 0.472727 0.581818 0.690909 0.563636 0.527273 0.490909 0.363636 ],[0.115385 0.269231 0.5 0.730769 0."
+	      "884615 0.884615 0.807692 0.884615 0.884615 0.653846 0.884615 0.730769 0.5 0.269231 0.115385 0.346154 0.115385 0"
+	      ".115385 0.192308 0.115385 0.115385 ],[0.98 0.96 0.92]);\nplot([0 1 1 0 0 ],[0 0 1 1 0 ]);\nfprintf('','COMMENT:"
+	      " end icon graphics');\nfprintf('','COMMENT: begin icon text');\ncolor('black');port_label('output',1,'1');\nfpr"
+	      "intf('','COMMENT: end icon text');\n"
+	    }
+	    Block {
+	      BlockType		      Reference
+	      Name		      "Counter"
+	      SID		      2156
+	      Ports		      [0, 1]
+	      Position		      [15, 30, 75, 90]
+	      LibraryVersion	      "1.2"
+	      SourceBlock	      "xbsIndex_r4/Counter"
+	      SourceType	      "Xilinx Counter Block"
+	      infoedit		      "Hardware notes: Free running counters are the least expensive in hardware.  A count limited co"
+	      "unter is implemented by combining a counter with a comparator."
+	      cnt_type		      "Count Limited"
+	      cnt_to		      "3"
+	      operation		      "Up"
+	      start_count	      "0"
+	      cnt_by_val	      "1"
+	      arith_type	      "Unsigned"
+	      n_bits		      "3"
+	      bin_pt		      "0"
+	      load_pin		      off
+	      rst		      off
+	      en		      off
+	      explicit_period	      "on"
+	      period		      "1"
+	      dbl_ovrd		      off
+	      use_behavioral_HDL      off
+	      implementation	      "Fabric"
+	      xl_use_area	      off
+	      xl_area		      "[0,0,0,0,0,0,0]"
+	      use_rpm		      "off"
+	      has_advanced_control    "0"
+	      sggui_pos		      "-1,-1,-1,-1"
+	      block_type	      "counter"
+	      block_version	      "11.4"
+	      sg_icon_stat	      "60,60,0,1,white,blue,0,335d209d,right,"
+	      sg_mask_display	      "fprintf('','COMMENT: begin icon graphics');\npatch([0 1 1 0 ],[0 0 1 1 ],[0.77 0.82 0.91"
+	      "]);\npatch([0.233333 0.0666667 0.3 0.0666667 0.233333 0.5 0.566667 0.633333 0.916667 0.7 0.483333 0.333333 0.58"
+	      "3333 0.333333 0.483333 0.7 0.916667 0.633333 0.566667 0.5 0.233333 ],[0.1 0.266667 0.5 0.733333 0.9 0.9 0.83333"
+	      "3 0.9 0.9 0.683333 0.9 0.75 0.5 0.25 0.1 0.316667 0.1 0.1 0.166667 0.1 0.1 ],[0.98 0.96 0.92]);\nplot([0 1 1 0 "
+	      "0 ],[0 0 1 1 0 ]);\nfprintf('','COMMENT: end icon graphics');\nfprintf('','COMMENT: begin icon text');\ncolor('"
+	      "black');port_label('output',1,'out');\nfprintf('','COMMENT: end icon text');\n"
+	    }
+	    Block {
+	      BlockType		      Reference
+	      Name		      "Single Port RAM"
+	      SID		      2157
+	      Ports		      [3, 1]
+	      Position		      [100, 102, 160, 158]
+	      LibraryVersion	      "1.2"
+	      SourceBlock	      "xbsIndex_r4/Single Port RAM"
+	      SourceType	      "Xilinx Single Port Random Access Memory Block"
+	      depth		      "8"
+	      initVector	      "0"
+	      distributed_mem	      "Block RAM"
+	      write_mode	      "Read Before Write"
+	      rst		      off
+	      init_reg		      "0"
+	      en		      off
+	      latency		      "2"
+	      dbl_ovrd		      off
+	      optimize		      "Area"
+	      use_rpm		      off
+	      xl_use_area	      off
+	      xl_area		      "[0,0,0,0,0,0,0]"
+	      has_advanced_control    "0"
+	      sggui_pos		      "-1,-1,-1,-1"
+	      block_type	      "spram"
+	      block_version	      "11.4"
+	      sg_icon_stat	      "60,56,3,1,white,blue,0,f2d5aa4c,right,"
+	      sg_mask_display	      "fprintf('','COMMENT: begin icon graphics');\npatch([0 1 1 0 ],[0 0 1 1 ],[0.77 0.82 0.91"
+	      "]);\npatch([0.25 0.1 0.316667 0.1 0.25 0.5 0.566667 0.633333 0.9 0.683333 0.483333 0.333333 0.533333 0.333333 0"
+	      ".483333 0.683333 0.9 0.633333 0.566667 0.5 0.25 ],[0.107143 0.267857 0.5 0.732143 0.892857 0.892857 0.821429 0."
+	      "892857 0.892857 0.660714 0.875 0.714286 0.5 0.285714 0.125 0.339286 0.107143 0.107143 0.178571 0.107143 0.10714"
+	      "3 ],[0.98 0.96 0.92]);\nplot([0 1 1 0 0 ],[0 0 1 1 0 ]);\nfprintf('','COMMENT: end icon graphics');\nfprintf(''"
+	      ",'COMMENT: begin icon text');\ncolor('black');port_label('input',1,'addr');\ncolor('black');port_label('input',"
+	      "2,'data');\ncolor('black');port_label('input',3,'we');\ncolor('black');disp('z^{-2}','texmode','on');\nfprintf("
+	      "'','COMMENT: end icon text');\n"
+	    }
+	    Block {
+	      BlockType		      Outport
+	      Name		      "Out1"
+	      SID		      2154
+	      Position		      [190, 120, 210, 140]
+	      IconDisplay	      "Port number"
+	    }
+	    Line {
+	      SrcBlock		      "Single Port RAM"
+	      SrcPort		      1
+	      Points		      [5, 0; 0, -5]
+	      DstBlock		      "Out1"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Constant2"
+	      SrcPort		      1
+	      Points		      [5, 0; 0, -30]
+	      DstBlock		      "Single Port RAM"
+	      DstPort		      3
+	    }
+	    Line {
+	      SrcBlock		      "In1"
+	      SrcPort		      1
+	      DstBlock		      "Single Port RAM"
+	      DstPort		      2
+	    }
+	    Line {
+	      SrcBlock		      "Counter"
+	      SrcPort		      1
+	      Points		      [0, 50]
+	      DstBlock		      "Single Port RAM"
+	      DstPort		      1
+	    }
+	  }
+	}
+	Block {
+	  BlockType		  Outport
+	  Name			  "Out1"
+	  SID			  2151
+	  Position		  [140, 40, 160, 60]
+	  IconDisplay		  "Port number"
+	}
+	Line {
+	  SrcBlock		  "delay_bram"
+	  SrcPort		  1
+	  DstBlock		  "Out1"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "In1"
+	  SrcPort		  1
+	  DstBlock		  "delay_bram"
+	  DstPort		  1
 	}
       }
     }
@@ -26219,17 +26486,91 @@ Library {
 	ZoomFactor		"100"
 	Block {
 	  BlockType		  Inport
-	  Name			  "d_sgtemp"
+	  Name			  "d"
 	  SID			  272
 	  Position		  [15, 53, 45, 67]
 	  IconDisplay		  "Port number"
 	}
 	Block {
+	  BlockType		  Reference
+	  Name			  "Register0"
+	  SID			  2136
+	  Ports			  [1, 1]
+	  Position		  [75, 32, 135, 88]
+	  LibraryVersion	  "1.2"
+	  SourceBlock		  "xbsIndex_r4/Register"
+	  SourceType		  "Xilinx Register Block"
+	  init			  "0"
+	  rst			  off
+	  en			  off
+	  dbl_ovrd		  off
+	  xl_use_area		  off
+	  xl_area		  "[0,0,0,0,0,0,0]"
+	  has_advanced_control	  "0"
+	  sggui_pos		  "-1,-1,-1,-1"
+	  block_type		  "register"
+	  block_version		  "11.4"
+	  sg_icon_stat		  "60,56,1,1,white,blue,0,ef2275f7,right,"
+	  sg_mask_display	  "fprintf('','COMMENT: begin icon graphics');\npatch([0 1 1 0 ],[0 0 1 1 ],[0.77 0.82 0.91]);\npat"
+	  "ch([0.25 0.1 0.316667 0.1 0.25 0.5 0.566667 0.633333 0.9 0.683333 0.483333 0.333333 0.533333 0.333333 0.483333 0.68"
+	  "3333 0.9 0.633333 0.566667 0.5 0.25 ],[0.107143 0.267857 0.5 0.732143 0.892857 0.892857 0.821429 0.892857 0.892857 "
+	  "0.660714 0.875 0.714286 0.5 0.285714 0.125 0.339286 0.107143 0.107143 0.178571 0.107143 0.107143 ],[0.98 0.96 0.92]"
+	  ");\nplot([0 1 1 0 0 ],[0 0 1 1 0 ]);\nfprintf('','COMMENT: end icon graphics');\nfprintf('','COMMENT: begin icon te"
+	  "xt');\ncolor('black');port_label('input',1,'d');\ncolor('black');port_label('output',1,'q');\ncolor('black');disp('"
+	  "\\bf{z^{-1}}','texmode','on');\nfprintf('','COMMENT: end icon text');\n"
+	}
+	Block {
+	  BlockType		  Reference
+	  Name			  "Register1"
+	  SID			  2137
+	  Ports			  [1, 1]
+	  Position		  [165, 32, 225, 88]
+	  LibraryVersion	  "1.2"
+	  SourceBlock		  "xbsIndex_r4/Register"
+	  SourceType		  "Xilinx Register Block"
+	  init			  "0"
+	  rst			  off
+	  en			  off
+	  dbl_ovrd		  off
+	  xl_use_area		  off
+	  xl_area		  "[0,0,0,0,0,0,0]"
+	  has_advanced_control	  "0"
+	  sggui_pos		  "-1,-1,-1,-1"
+	  block_type		  "register"
+	  block_version		  "11.4"
+	  sg_icon_stat		  "60,56,1,1,white,blue,0,ef2275f7,right,"
+	  sg_mask_display	  "fprintf('','COMMENT: begin icon graphics');\npatch([0 1 1 0 ],[0 0 1 1 ],[0.77 0.82 0.91]);\npat"
+	  "ch([0.25 0.1 0.316667 0.1 0.25 0.5 0.566667 0.633333 0.9 0.683333 0.483333 0.333333 0.533333 0.333333 0.483333 0.68"
+	  "3333 0.9 0.633333 0.566667 0.5 0.25 ],[0.107143 0.267857 0.5 0.732143 0.892857 0.892857 0.821429 0.892857 0.892857 "
+	  "0.660714 0.875 0.714286 0.5 0.285714 0.125 0.339286 0.107143 0.107143 0.178571 0.107143 0.107143 ],[0.98 0.96 0.92]"
+	  ");\nplot([0 1 1 0 0 ],[0 0 1 1 0 ]);\nfprintf('','COMMENT: end icon graphics');\nfprintf('','COMMENT: begin icon te"
+	  "xt');\ncolor('black');port_label('input',1,'d');\ncolor('black');port_label('output',1,'q');\ncolor('black');disp('"
+	  "\\bf{z^{-1}}','texmode','on');\nfprintf('','COMMENT: end icon text');\n"
+	}
+	Block {
 	  BlockType		  Outport
-	  Name			  "q_sgtemp"
+	  Name			  "q"
 	  SID			  275
 	  Position		  [255, 53, 290, 67]
 	  IconDisplay		  "Port number"
+	}
+	Line {
+	  SrcBlock		  "Register1"
+	  SrcPort		  1
+	  DstBlock		  "q"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Register0"
+	  SrcPort		  1
+	  DstBlock		  "Register1"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "d"
+	  SrcPort		  1
+	  DstBlock		  "Register0"
+	  DstPort		  1
 	}
       }
     }
