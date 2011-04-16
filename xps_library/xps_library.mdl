@@ -15,9 +15,9 @@ Library {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "mwagner"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Fri Apr 15 10:52:35 2011"
-  RTWModifiedTimeStamp	  224765551
-  ModelVersionFormat	  "1.%<AutoIncrement:436>"
+  LastModifiedDate	  "Fri Apr 15 19:13:25 2011"
+  RTWModifiedTimeStamp	  224795604
+  ModelVersionFormat	  "1.%<AutoIncrement:437>"
   ConfigurationManager	  "None"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -713,7 +713,7 @@ Library {
   }
   System {
     Name		    "xps_library"
-    Location		    [5, 52, 994, 738]
+    Location		    [5, 77, 994, 737]
     Open		    on
     ModelBrowserVisibility  off
     ModelBrowserWidth	    200
@@ -727,7 +727,7 @@ Library {
     ShowPageBoundaries	    off
     ZoomFactor		    "100"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    239
+    SIDHighWatermark	    240
     Block {
       BlockType		      SubSystem
       Name		      "1new_yellow_block"
@@ -41611,10 +41611,10 @@ Library {
     Block {
       BlockType		      SubSystem
       Name		      "software register"
-      SID		      238
+      SID		      240
       Tag		      "xps:sw_reg"
       Ports		      [1, 1]
-      Position		      [20, 507, 120, 543]
+      Position		      [20, 495, 120, 525]
       BackgroundColor	      "[1.000000, 1.000000, 0.000000]"
       MinAlgLoopOccurrences   off
       PropExecContextOutsideSubsystem off
@@ -41623,14 +41623,14 @@ Library {
       Opaque		      off
       RequestExecContextInheritance off
       MaskHideContents	      off
-      MaskPromptString	      "I/O direction|Data Type|Data bitwidth|Data binary point|Sample period|Latency"
+      MaskPromptString	      "I/O direction|Data Type|Data bitwidth|Data binary point|Sample period|Mask Parameter 6:"
       MaskStyleString	      "popup(From Processor|To Processor),popup(Unsigned|Signed  (2's comp)),edit,edit,edit,edit"
       MaskTunableValueString  "on,on,on,on,on,on"
       MaskCallbackString      "|||||"
       MaskEnableString	      "on,on,off,on,on,on"
-      MaskVisibilityString    "on,on,on,on,on,on"
+      MaskVisibilityString    "on,on,on,on,on,off"
       MaskToolTipString	      "on,on,on,on,on,on"
-      MaskVariables	      "io_dir=&1;arith_type=&2;bitwidth=@3;bin_pt=@4;sample_period=@5;latency=@6;"
+      MaskVariables	      "io_dir=@1;arith_type=@2;bitwidth=@3;bin_pt=@4;sample_period=@5;gw_name=@6;"
       MaskInitialization      "register_mask;"
       MaskSelfModifiable      on
       MaskIconFrame	      on
@@ -41638,10 +41638,10 @@ Library {
       MaskIconRotate	      "none"
       MaskPortRotate	      "default"
       MaskIconUnits	      "autoscale"
-      MaskValueString	      "From Processor|Signed  (2's comp)|32|0|1|0"
+      MaskValueString	      "To Processor|Unsigned|32|0|1|xps_library_software_register_user_data_in"
       System {
 	Name			"software register"
-	Location		[445, 146, 994, 327]
+	Location		[460, 146, 1009, 327]
 	Open			off
 	ModelBrowserVisibility	off
 	ModelBrowserWidth	200
@@ -41654,68 +41654,100 @@ Library {
 	TiledPageScale		1
 	ShowPageBoundaries	off
 	ZoomFactor		"100"
-	SIDHighWatermark	29
-	SIDPrevWatermark	27
+	SIDHighWatermark	5
+	SIDPrevWatermark	5
 	Block {
 	  BlockType		  Inport
-	  Name			  "sim_in"
-	  SID			  28
+	  Name			  "reg_out"
+	  SID			  2
 	  Position		  [20, 52, 50, 68]
 	  IconDisplay		  "Port number"
+	  OutDataType		  "sfix(16)"
+	  OutScaling		  "2^0"
 	}
 	Block {
 	  BlockType		  Reference
-	  Name			  "xps_library_software_register_reg_in_user_data_out"
-	  SID			  29
+	  Name			  "convert"
+	  SID			  3
 	  Ports			  [1, 1]
-	  Position		  [230, 50, 290, 70]
-	  LibraryVersion	  "1.2"
-	  SourceBlock		  "xbsIndex_r4/Gateway In"
-	  SourceType		  "Xilinx Gateway In Block"
-	  infoedit		  "Gateway in block.  Converts inputs of type Simulink integer, double and fixed point to  Xilinx fixed p"
-	  "oint type.<br><br>Hardware notes:  In hardware these blocks become top level input ports."
-	  arith_type		  "Signed  (2's comp)"
+	  Position		  [80, 50, 110, 70]
+	  SourceBlock		  "xbsIndex_r4/Convert"
+	  SourceType		  "Xilinx Type Converter Block"
+	  infoedit		  "Hardware notes: rounding and saturating require hardware resources; truncating and wrapping do not."
+	  arith_type		  "Unsigned"
 	  n_bits		  "32"
 	  bin_pt		  "0"
-	  quantization		  "Round  (unbiased: +/- Inf)"
-	  overflow		  "Saturate"
-	  period		  "1"
-	  dbl_ovrd		  off
-	  timing_constraint	  "None"
-	  locs_specified	  off
-	  LOCs			  "{}"
-	  xl_use_area		  off
+	  quantization		  "Truncate"
+	  overflow		  "Wrap"
+	  latency		  "0"
+	  dbl_ovrd		  "off"
+	  pipeline		  "off"
+	  xl_use_area		  "off"
 	  xl_area		  "[0,0,0,0,0,0,0]"
+	  has_advanced_control	  "0"
+	  sggui_pos		  "20,20,374,375"
+	  block_type		  "convert"
+	  block_version		  "8.2.02"
+	  sg_icon_stat		  "30,20,1,1,white,blue,0,74901e60,right"
+	  sg_mask_display	  "fprintf('','COMMENT: begin icon graphics');\npatch([0 45 45 0 ],[0 0 30 30 ],[0.77 0.82 0.91]);\n"
+	  "patch([15 10 17 10 15 23 25 27 35 28 22 17 23 17 22 28 35 27 25 23 15 ],[3 8 15 22 27 27 25 27 27 20 26 21 15 9 4 1"
+	  "0 3 3 5 3 3 ],[0.98 0.96 0.92]);\nplot([0 45 45 0 0 ],[0 0 30 30 0 ]);\nfprintf('','COMMENT: end icon graphics');\n"
+	  "fprintf('','COMMENT: begin icon text');\ncolor('black');port_label('output',1,'cast');\nfprintf('','COMMENT: end ic"
+	  "on text');\n"
+	}
+	Block {
+	  BlockType		  Reference
+	  Name			  "xps_library_software_register_user_data_in"
+	  SID			  4
+	  Ports			  [1, 1]
+	  Position		  [150, 50, 190, 70]
+	  SourceBlock		  "xbsIndex_r4/Gateway Out"
+	  SourceType		  "Xilinx Gateway Out Block"
+	  infoedit		  "Gateway out block.  Converts Xilinx fixed point inputs into ouputs of type Simulink integer, double, o"
+	  "r fixed point.<P><P>Hardware notes:  In hardware these blocks become top level output ports or are discarded, depen"
+	  "ding on how they are configured."
 	  hdl_port		  "on"
+	  timing_constraint	  "None"
+	  locs_specified	  "off"
+	  LOCs			  "{}"
+	  xl_use_area		  "off"
+	  xl_area		  "[0,0,0,0,0,0,0]"
 	  has_advanced_control	  "0"
 	  sggui_pos		  "-1,-1,-1,-1"
-	  block_type		  "gatewayin"
-	  block_version		  "11.4"
-	  sg_icon_stat		  "60,20,1,1,white,yellow,0,00d3666e,right,"
-	  sg_mask_display	  "fprintf('','COMMENT: begin icon graphics');\npatch([0 1 1 0 ],[0 0 1 1 ],[0.95 0.93 0.65]);\npat"
-	  "ch([0.4 0.35 0.433333 0.35 0.4 0.483333 0.5 0.516667 0.616667 0.55 0.483333 0.433333 0.516667 0.433333 0.483333 0.5"
-	  "5 0.616667 0.516667 0.5 0.483333 0.4 ],[0.1 0.25 0.5 0.75 0.9 0.9 0.85 0.9 0.9 0.7 0.9 0.75 0.5 0.25 0.1 0.3 0.1 0."
-	  "1 0.15 0.1 0.1 ],[0.98 0.96 0.92]);\nplot([0 1 1 0 0 ],[0 0 1 1 0 ]);\nfprintf('','COMMENT: end icon graphics');\nf"
-	  "printf('','COMMENT: begin icon text');\ncolor('black');port_label('input',1,'\\fontsize{11pt}\\bf In ','texmode','o"
-	  "n');\ncolor('black');port_label('output',1,' ');\nfprintf('','COMMENT: end icon text');\n"
+	  block_type		  "gatewayout"
+	  block_version		  "8.2.02"
+	  sg_icon_stat		  "40,20,1,1,white,yellow,0,38220381,right"
+	  sg_mask_display	  "fprintf('','COMMENT: begin icon graphics');\npatch([0 40 40 0 ],[0 0 20 20 ],[0.95 0.93 0.65]);\n"
+	  "patch([14 11 16 11 14 19 20 21 27 23 19 16 21 16 19 23 27 21 20 19 14 ],[2 5 10 15 18 18 17 18 18 14 18 15 10 5 2 6"
+	  " 2 2 3 2 2 ],[0.98 0.96 0.92]);\nplot([0 40 40 0 0 ],[0 0 20 20 0 ]);\nfprintf('','COMMENT: end icon graphics');\nf"
+	  "printf('','COMMENT: begin icon text');\ncolor('black');port_label('input',1,' ');\ncolor('black');port_label('outpu"
+	  "t',1,'\\fontsize{11pt}\\bf Out ','texmode','on');\nfprintf('','COMMENT: end icon text');\n"
 	}
 	Block {
 	  BlockType		  Outport
-	  Name			  "reg_in"
+	  Name			  "sim_out"
 	  SID			  5
 	  Position		  [350, 52, 380, 68]
 	  IconDisplay		  "Port number"
+	  OutDataType		  "sfix(16)"
+	  OutScaling		  "2^0"
 	}
 	Line {
-	  SrcBlock		  "sim_in"
+	  SrcBlock		  "xps_library_software_register_user_data_in"
 	  SrcPort		  1
-	  DstBlock		  "xps_library_software_register_reg_in_user_data_out"
+	  DstBlock		  "sim_out"
 	  DstPort		  1
 	}
 	Line {
-	  SrcBlock		  "xps_library_software_register_reg_in_user_data_out"
+	  SrcBlock		  "convert"
 	  SrcPort		  1
-	  DstBlock		  "reg_in"
+	  DstBlock		  "xps_library_software_register_user_data_in"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "reg_out"
+	  SrcPort		  1
+	  DstBlock		  "convert"
 	  DstPort		  1
 	}
       }
