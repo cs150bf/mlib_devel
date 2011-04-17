@@ -179,10 +179,12 @@ set_param([blk, '/cast_c_im'], ...
 % Set conjugation mode.
 
 if strcmp(conjugated, 'on'),
-    set_param([blk, '/alumode1'], 'const', '3');
+    set_param([blk, '/alumode1'], 'const', '1');
+    set_param([blk, '/carryin1'], 'const', '1');
     set_param([blk, '/alumode3'], 'const', '0');
 else,
     set_param([blk, '/alumode1'], 'const', '0');
+    set_param([blk, '/carryin1'], 'const', '0');
     set_param([blk, '/alumode3'], 'const', '3');
 end
 

@@ -224,10 +224,12 @@ xlsub2_terminator2 = xBlock(struct('source', 'terminator','name','Terminator2'),
                         
 % conjugation option
 if strcmp(conjugated, 'on'),
-    alumode1_const = 3;
+    alumode1_const = 1;
+    carryin_const = 1;
     alumode3_const = 0;
 else
     alumode1_const = 0;
+    carryin_const = 0;
     alumode3_const = 3;
 end
 
