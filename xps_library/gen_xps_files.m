@@ -633,9 +633,7 @@ if run_edk
     fclose(fid);
 
     eval(['cd ',xps_path]);
-    disp([sprintf('++++++++++++++++++++\n'), '**************######## Hey there!', 'xps_path ', xps_path, sprintf('\n++++++++++\n')]);
     status = system(['xps -nw -scr run_xps.tcl system.xmp']);
-    %status = 0;
     if status ~= 0
         cd(simulink_path);
         error('XPS failed.');
@@ -649,10 +647,7 @@ if run_edk
             end % if dos('gen_prog_files.bat')
         else
             % Linux case
-            disp('+++++++***********####### Attention please!');
-            unix('pwd');
             [status, message] = unix('chmod +x gen_prog_files');
-            disp(['++++++++++***********####### Look at here!!!!!!', message]);
             [status, message] = unix('./gen_prog_files');
             if status ~= 0
                 cd(simulink_path);
