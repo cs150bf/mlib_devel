@@ -45,7 +45,7 @@
 %                                                                             %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-function dec_fir_init_test(blk,varargin)
+function dec_fir_init(blk,varargin)
 
 clog('entering dec_fir_init', 'trace');
 
