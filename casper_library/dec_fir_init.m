@@ -91,16 +91,14 @@ num_fir_col = length(coeff) / n_inputs;
 coeff_sym = 0;
 fir_col_type = 'fir_col';
 
-if mod(length(coeff),2) == 0, 
+
+if mod(length(coeff),2) == 0 && mod(num_fir_col, 2) == 0
   if coeff_round(1:length(coeff)/2) == coeff_round(length(coeff):-1:length(coeff)/2+1),
-      if mod(num_fir_col/2, 1) ==0 || num_fir_col/2 < 1
-        num_fir_col = num_fir_col / 2;
-        fir_col_type = 'fir_dbl_col';
-        coeff_sym = 1;
-      end
+      num_fir_col = num_fir_col / 2;
+      fir_col_type = 'fir_dbl_col';
+      coeff_sym = 1;
   end
 end
-
 
 delete_lines(blk);
 
@@ -122,52 +120,24 @@ else
   first_stage_hdl_external = 'off';
 end
 
-if num_fir_col <1
-    blk_name = [fir_col_type, num2str(num_fir_col)];
-    reuse_block(blk, blk_name, ['casper_library_downconverter/', fir_col_type], ...
-        'Position', [200*num_fir_col+200 50 200*num_fir_col+300 250], 'n_inputs', num2str(n_inputs/2),...
-        'coeff', ['[',num2str(coeff(1:length(coeff)/2)),']'],...
-        'mult_latency', num2str(mult_latency), 'add_latency', num2str(add_latency), ...
-        'coeff_bit_width', num2str(coeff_bit_width), 'coeff_bin_pt', num2str(coeff_bin_pt), ...
-        'adder_imp', adder_imp, 'first_stage_hdl', absorb_adders);
-    for j=1:n_inputs,
-        add_line(blk, ['real',num2str(j),'/1'], [blk_name,'/',num2str(2*j-1)]);
-        add_line(blk, ['imag',num2str(j),'/1'], [blk_name,'/',num2str(2*j)]);
-    end
-    
-    reuse_block(blk, 'real_sum', 'casper_library_misc/adder_tree', ...
-        'Position', [200*num_fir_col+400 300 200*num_fir_col+460 10+300], ...
-        'n_inputs',num2str(1),'latency',num2str(add_latency), ...
-        'adder_imp', adder_imp, 'first_stage_hdl', first_stage_hdl_external);
-    reuse_block(blk, 'imag_sum', 'casper_library_misc/adder_tree', ...
-        'Position', [200*num_fir_col+400 10+400 200*num_fir_col+460 20+400], ...
-        'n_inputs',num2str(1),'latency',num2str(add_latency), ...
-        'adder_imp', adder_imp, 'first_stage_hdl', first_stage_hdl_external);
-    
-    add_line(blk,[blk_name,'/',num2str(n_inputs*2+1)],['real_sum/',num2str(2)]);
-    add_line(blk,[blk_name,'/',num2str(n_inputs*2+2)],['imag_sum/',num2str(2)]);
-        
-else
-    reuse_block(blk, 'real_sum', 'casper_library_misc/adder_tree', ...
-        'Position', [200*num_fir_col+400 300 200*num_fir_col+460 num_fir_col*10+300], ...
-        'n_inputs',num2str(num_fir_col),'latency',num2str(add_latency), ...
-        'adder_imp', adder_imp, 'first_stage_hdl', first_stage_hdl_external);
-    reuse_block(blk, 'imag_sum', 'casper_library_misc/adder_tree', ...
-        'Position', [200*num_fir_col+400 num_fir_col*10+400 200*num_fir_col+460 num_fir_col*20+400], ...
-        'n_inputs',num2str(num_fir_col),'latency',num2str(add_latency), ...
-        'adder_imp', adder_imp, 'first_stage_hdl', first_stage_hdl_external);
-    
-end
+reuse_block(blk, 'real_sum', 'casper_library_misc/adder_tree', ...
+    'Position', [200*num_fir_col+400 300 200*num_fir_col+460 num_fir_col*10+300], ...
+    'n_inputs',num2str(num_fir_col),'latency',num2str(add_latency), ...
+    'adder_imp', adder_imp, 'first_stage_hdl', first_stage_hdl_external);
+reuse_block(blk, 'imag_sum', 'casper_library_misc/adder_tree', ...
+    'Position', [200*num_fir_col+400 num_fir_col*10+400 200*num_fir_col+460 num_fir_col*20+400], ...
+    'n_inputs',num2str(num_fir_col),'latency',num2str(add_latency), ...
+    'adder_imp', adder_imp, 'first_stage_hdl', first_stage_hdl_external);
 
-for i=1:num_fir_col
+for i=1:num_fir_col,
     blk_name = [fir_col_type,num2str(i)];
     prev_blk_name = [fir_col_type,num2str(i-1)];
     reuse_block(blk, blk_name, ['casper_library_downconverter/', fir_col_type], ...
         'Position', [200*i+200 50 200*i+300 250], 'n_inputs', num2str(n_inputs),...
         'coeff', ['[',num2str(coeff(i*n_inputs:-1:(i-1)*n_inputs+1)),']'],...
-        'mult_latency', num2str(mult_latency), 'add_latency', num2str(add_latency), ...
-        'coeff_bit_width', num2str(coeff_bit_width), 'coeff_bin_pt', num2str(coeff_bin_pt), ...
-        'adder_imp', adder_imp, 'first_stage_hdl', absorb_adders);
+	'mult_latency', num2str(mult_latency), 'add_latency', num2str(add_latency), ...
+	'coeff_bit_width', num2str(coeff_bit_width), 'coeff_bin_pt', num2str(coeff_bin_pt), ...
+	'adder_imp', adder_imp, 'first_stage_hdl', absorb_adders);
 
     if i == 1,
         for j=1:n_inputs,
@@ -188,7 +158,6 @@ for i=1:num_fir_col
         add_line(blk,[blk_name,'/',num2str(n_inputs*2+1)],['real_sum/',num2str(i+1)]);
         add_line(blk,[blk_name,'/',num2str(n_inputs*2+2)],['imag_sum/',num2str(i+1)]);
     end
-    
 end
 
 reuse_block(blk, 'shift1', 'xbsIndex_r4/Shift', ...
@@ -217,11 +186,7 @@ reuse_block(blk, 'dout', 'built-in/outport', ...
 % delay of sync
 if coeff_sym,
     % y(n) = sum(aix(n-i)) for i=0:N. sync is thus related to x(0)
-    if num_fir_col < 1
-        sync_latency = add_latency + mult_latency + ceil(log2(n_inputs*0.5))*add_latency + conv_latency;
-    else
-        sync_latency = add_latency + mult_latency + ceil(log2(n_inputs))*add_latency + conv_latency;
-    end
+    sync_latency = add_latency + mult_latency + ceil(log2(n_inputs))*add_latency + conv_latency;
 else
     sync_latency = mult_latency + ceil(log2(n_inputs))*add_latency + conv_latency;
 end
@@ -264,15 +229,11 @@ if coeff_sym,
             end
         end
     end
-    
-    if num_fir_col < 1
-        
-    else
-        for j=1:n_inputs,
-            blk_name = [fir_col_type,num2str(num_fir_col)];
-            add_line(blk,[blk_name,'/',num2str(j*2-1)],[blk_name,'/',num2str(2*n_inputs+j*2-1)]);
-            add_line(blk,[blk_name,'/',num2str(j*2)],[blk_name,'/',num2str(2*n_inputs+j*2)]);
-        end
+
+    for j=1:n_inputs,
+        blk_name = [fir_col_type,num2str(num_fir_col)];
+        add_line(blk,[blk_name,'/',num2str(j*2-1)],[blk_name,'/',num2str(2*n_inputs+j*2-1)]);
+        add_line(blk,[blk_name,'/',num2str(j*2)],[blk_name,'/',num2str(2*n_inputs+j*2)]);
     end
 end
 
